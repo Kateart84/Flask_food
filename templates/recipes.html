@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+Все рецепты здесь
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Все рецепты</h1>
+    {% if recipes|length > 0 %}
+        {% for el in  recipes %}
+        <div class="alert alert-info">
+            <h2>{{ el.title }}</h2>
+            <p>{{ el.ingredient }}</p>
+            <p><b>Дата: {{ el.date.date() }}</b></p>
+            <a href="/recipes/{{ el.id }}" class="btn btn-warning">Подробнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>У нас нет еще рецептов</p>
+    {% endif %}
+
+    </div>
+
+{% endblock %}
